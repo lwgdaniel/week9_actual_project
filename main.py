@@ -74,7 +74,7 @@ if page == "Chat":
         print(f"the type of item 0 in the list is...{type(call[0])}")
 
         for item in call:
-            st.session_state.messages.append({"role": "system", "content": item})
+            st.session_state.messages.append({"role": "system", "content": item.page_content})
 
         # Store user message
         st.session_state.messages.append({"role": "user", "content": user_prompt})
