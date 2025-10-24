@@ -6,6 +6,7 @@ import openai
 import os
 from openai import OpenAI
 import rag_module
+from rag_module import refer_to_docs
 
 keyyy = st.secrets["OPENAI_API_KEY"]
 
@@ -67,6 +68,9 @@ if page == "Chat":
         
         #call the RAG method. Send over the user prompt, and get back the additional context. 
         #then make a enhanced_user_prompt using the user_prompt + the additional context
+
+        call = refer_to_docs(user_prompt)
+        st.session_state.messages.append({"role": "system", "content": call})
 
         # Store user message
         st.session_state.messages.append({"role": "user", "content": user_prompt})
