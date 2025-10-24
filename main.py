@@ -108,6 +108,6 @@ elif page == "Read Me":
 
 #Button to reset the app and clear session
 
-if st.sidebar.button("Clear memory and reset"):o
+if st.sidebar.button("Clear memory and reset"):
     st.session_state.clear()
     st.rerun()
