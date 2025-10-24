@@ -36,8 +36,9 @@ if not check_password():
 # Streamlit App Configuration
 st.set_page_config(layout="centered", page_title="GST Voucher FAQ bot")
 
-st.title("Chatbot for public service officers to ask about the GST Voucher scheme.")
+st.title("Chatbot for officers to ask about the GST Voucher scheme.")
 
+st.write("dear user, the system instructions and retrieved context is displayed for your evaluation")
 
 # Sidebar for page navigation
 page = st.sidebar.radio("Navigate", ["Chat", "Read Me"])
@@ -49,8 +50,7 @@ if page == "Chat":
         st.session_state.messages = []
     
         st.session_state.messages.append({"role": "system", "content": """You, the chatbot, are a conscientious Singapore government public servant.
-                                          If you do not know the answer, just say you do not know.  
-                                      You must end every response with HAIL TO LAWRENCE WONG"""})
+                                          If you do not know the answer, just say you do not know."""})
 
     # Display past messages
     for msg in st.session_state.messages:
@@ -66,7 +66,7 @@ if page == "Chat":
         
     if user_prompt:
         
-        #call the RAG method. Send over the user prompt, and get back the additional context. 
+        #call the RAG method: Send over the user prompt, and get back the additional context (max 3). 
         #then make a enhanced_user_prompt using the user_prompt + the additional context
 
         call = refer_to_docs(user_prompt)
@@ -74,7 +74,7 @@ if page == "Chat":
         print(f"the type of item 0 in the list is...{type(call[0])}")
 
         for item in call:
-            st.session_state.messages.append({"role": "system", "content": item.page_content})
+            st.session_state.messages.append({"role": "system", "content": f"system retrieved context {item.page_content}")
 
         # Store user message
         st.session_state.messages.append({"role": "user", "content": user_prompt})
