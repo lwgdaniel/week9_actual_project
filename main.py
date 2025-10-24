@@ -43,6 +43,18 @@ st.write("dear user, the system instructions and retrieved context is displayed 
 # Sidebar for page navigation
 page = st.sidebar.radio("Navigate", ["Chat", "Read Me"])
 
+#Button to reset the app and clear session
+
+if st.sidebar.button("Clear memory and reset"):
+    st.session_state.clear()
+    st.rerun()
+
+choice = st.sidebar.radio(
+    "Show system(backend) messages? refresh page after changing selection",
+    options=["Yes", "No"],
+    index=0  # 0 = 'Yes' is the default
+)
+
 if page == "Chat":
 
     # Initialize chat history
@@ -107,14 +119,3 @@ elif page == "Read Me":
              Cash for their immediate needs; MediSave for seniors to support their healthcare needs; U-Save to offset their utilities bills; and Service and Conservancy Charges (S&CC) Rebate to offset their S&CC.
              """)
 
-#Button to reset the app and clear session
-
-if st.sidebar.button("Clear memory and reset"):
-    st.session_state.clear()
-    st.rerun()
-
-choice = st.sidebar.radio(
-    "Show system(backend) messages? refresh page after changing selection",
-    options=["Yes", "No"],
-    index=0  # 0 = 'Yes' is the default
-)
