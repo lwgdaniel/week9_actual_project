@@ -49,8 +49,10 @@ if page == "Chat":
     if "messages" not in st.session_state:
         st.session_state.messages = []
     
-        st.session_state.messages.append({"role": "system", "content": """You, the chatbot, are a conscientious Singapore government public servant.
-                                          If you do not know the answer, just say you do not know."""})
+        st.session_state.messages.append({"role": "system", "content": """You, the chatbot, are a conscientious Singapore government public servant tasked to
+                                          answer questions about GST Voucher only. If the question is not related to GST Voucher, just say politely that
+                                          it is outside your area of expertise.
+                                          If you do not know the answer, just say you do not know. Do not make things up."""})
 
     # Display past messages
     for msg in st.session_state.messages:
@@ -106,6 +108,6 @@ elif page == "Read Me":
 
 #Button to reset the app and clear session
 
-if st.sidebar.button("Clear memory and reset"):
+if st.sidebar.button("Clear memory and reset"):o
     st.session_state.clear()
     st.rerun()
