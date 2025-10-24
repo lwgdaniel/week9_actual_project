@@ -65,6 +65,9 @@ if page == "Chat":
     user_prompt = st.chat_input("Type your question here...")
         
     if user_prompt:
+
+        # Store user message
+        st.session_state.messages.append({"role": "user", "content": user_prompt})
         
         #call the RAG method: Send over the user prompt, and get back the additional context (max 3). 
         #then make a enhanced_user_prompt using the user_prompt + the additional context
@@ -75,9 +78,6 @@ if page == "Chat":
 
         for item in call:
             st.session_state.messages.append({"role": "system", "content": f"system retrieved context {item.page_content}"})
-
-        # Store user message
-        st.session_state.messages.append({"role": "user", "content": user_prompt})
 
         # Generate model response
         response = get_completion_by_messages(st.session_state.messages)
