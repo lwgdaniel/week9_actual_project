@@ -71,6 +71,7 @@ if page == "Chat":
 
         call = refer_to_docs(user_prompt)
         print(f"call is type {type(call)}")
+        print(f"the type of item 0 in the list is...{type(call[0])}")
 
         for item in call:
             st.session_state.messages.append({"role": "system", "content": item})
