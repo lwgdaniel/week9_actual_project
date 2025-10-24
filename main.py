@@ -59,7 +59,8 @@ if page == "Chat":
         if msg["role"] == "user":
             st.chat_message("user").write(msg["content"])
         elif msg["role"] == "system":
-            st.chat_message("system").write(msg["content"])
+            if choice=="Yes":
+                st.chat_message("system").write(msg["content"])
         else:
             st.chat_message("assistant").write(msg["content"])
 
@@ -113,7 +114,7 @@ if st.sidebar.button("Clear memory and reset"):
     st.rerun()
 
 choice = st.sidebar.radio(
-    "Show system(backend) messages?:",
+    "Show system(backend) messages? refresh page after changing selection",
     options=["Yes", "No"],
     index=0  # 0 = 'Yes' is the default
 )
