@@ -112,7 +112,7 @@ if st.sidebar.button("Clear memory and reset"):
     st.session_state.clear()
     st.rerun()
 
-choice = st.radio(
+choice = st.sidebar.radio(
     "Show system(backend) messages?:",
     options=["Yes", "No"],
     index=0  # 0 = 'Yes' is the default
