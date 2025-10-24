@@ -42,7 +42,7 @@ page = st.sidebar.radio("Navigate", ["Chat", "Read Me"])
 
 # Button to choose whether to show system messages
 choice = st.sidebar.radio(
-    "Show system(backend) messages? refresh page after changing selection",
+    "Show system(backend) messages?",
     options=["Yes", "No"],
     index=0  # 0 = 'Yes' is the default
 )
