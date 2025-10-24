@@ -33,27 +33,27 @@ if not check_password():
 
 ##########      setup chatbot
 
-# Streamlit App Configuration
 st.set_page_config(layout="centered", page_title="GST Voucher FAQ bot")
 
 st.title("Chatbot for officers to ask about the GST Voucher scheme.")
 
-st.write("dear user, the system instructions and retrieved context is displayed for your evaluation")
-
 # Sidebar for page navigation
 page = st.sidebar.radio("Navigate", ["Chat", "Read Me"])
 
-#Button to reset the app and clear session
-
-if st.sidebar.button("Clear memory and reset"):
-    st.session_state.clear()
-    st.rerun()
-
+# Button to choose whether to show system messages
 choice = st.sidebar.radio(
     "Show system(backend) messages? refresh page after changing selection",
     options=["Yes", "No"],
     index=0  # 0 = 'Yes' is the default
 )
+
+# Button to reset the app and clear session
+
+if st.sidebar.button("Clear memory and reset"):
+    st.session_state.clear()
+    st.rerun()
+
+# main chatbot body
 
 if page == "Chat":
 
