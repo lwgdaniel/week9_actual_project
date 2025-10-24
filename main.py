@@ -70,7 +70,10 @@ if page == "Chat":
         #then make a enhanced_user_prompt using the user_prompt + the additional context
 
         call = refer_to_docs(user_prompt)
-        st.session_state.messages.append({"role": "system", "content": call})
+        print(f"call is type {type(call)}")
+
+        for item in call:
+            st.session_state.messages.append({"role": "system", "content": item})
 
         # Store user message
         st.session_state.messages.append({"role": "user", "content": user_prompt})
